@@ -1,5 +1,3 @@
-# Simple Assistant
+# AddressApp
 
-    simple village assistant
-
-  - using selenium HtmlUnit-Driver
+  - using JavaFX
