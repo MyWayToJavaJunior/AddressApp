@@ -1,0 +1,9 @@
+#filetypes
+*.jar
+*.iml
+#directories
+.idea
+jar/
+target
+src/properties
+out
