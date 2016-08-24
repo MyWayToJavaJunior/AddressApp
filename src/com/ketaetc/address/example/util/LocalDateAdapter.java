@@ -1,4 +1,4 @@
-package ch.makery.address.util;
+package com.ketaetc.address.example.util;
 
 /**
  * Author: ketaetc (ketaetc@gmail.com)

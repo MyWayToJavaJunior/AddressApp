@@ -1,22 +1,17 @@
-package ch.makery.address.view;
+package com.ketaetc.address.example.view;
 
 /**
  * Author: ketaetc (ketaetc@gmail.com)
  * Date: 21.06.16 0:22
  */
 
+import com.ketaetc.address.example.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ch.makery.address.model.Person;
-import ch.makery.address.util.DateUtil;
-
-/**
- * Окно для изменения информации об адресате.
- *
- */
+import com.ketaetc.address.example.model.Person;
 
 public class PersonEditDialogController {
 
@@ -38,28 +33,14 @@ public class PersonEditDialogController {
     private Person person;
     private boolean okClicked = false;
 
-    /**
-     * Инициализирует класс-контроллер. Этот метод вызывается автоматически
-     * после того, как fxml-файл будет загружен.
-     */
     @FXML
     private void initialize() {
     }
 
-    /**
-     * Устанавливает сцену для этого окна.
-     *
-     * @param dialogStage
-     */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
-    /**
-     * Задаёт адресата, информацию о котором будем менять.
-     *
-     * @param person
-     */
     public void setPerson(Person person) {
         this.person = person;
 
@@ -72,18 +53,10 @@ public class PersonEditDialogController {
         birthdayField.setPromptText("dd.mm.yyyy");
     }
 
-    /**
-     * Returns true, если пользователь кликнул OK, в другом случае false.
-     *
-     * @return
-     */
     public boolean isOkClicked() {
         return okClicked;
     }
 
-    /**
-     * Вызывается, когда пользователь кликнул по кнопке OK.
-     */
     @FXML
     private void handleOk() {
         if (isInputValid()) {
@@ -99,19 +72,11 @@ public class PersonEditDialogController {
         }
     }
 
-    /**
-     * Вызывается, когда пользователь кликнул по кнопке Cancel.
-     */
     @FXML
     private void handleCancel() {
         dialogStage.close();
     }
 
-    /**
-     * Проверяет пользовательский ввод в текстовых полях.
-     *
-     * @return true, если пользовательский ввод корректен
-     */
     private boolean isInputValid() {
         String errorMessage = "";
 
@@ -151,7 +116,6 @@ public class PersonEditDialogController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Показываем сообщение об ошибке.
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
             alert.setTitle("Invalid Fields");

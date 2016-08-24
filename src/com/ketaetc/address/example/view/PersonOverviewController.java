@@ -1,19 +1,19 @@
-package ch.makery.address.view;
+package com.ketaetc.address.example.view;
 
 /**
  * Author: ketaetc (ketaetc@gmail.com)
  * Date: 20.06.16 23:55
  */
 
-import ch.makery.address.util.DateUtil;
+import com.ketaetc.address.example.util.DateUtil;
+import com.ketaetc.address.example.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import ch.makery.address.MainApp;
-import ch.makery.address.model.Person;
+import com.ketaetc.address.example.model.Person;
 
 public class PersonOverviewController {
 
@@ -40,65 +40,37 @@ public class PersonOverviewController {
     // Ссылка на главное приложение.
     private MainApp mainApp;
 
-    /**
-     * Конструктор.
-     * Конструктор вызывается раньше метода initialize().
-     */
     public PersonOverviewController() {
     }
 
-    /**
-     * Инициализация класса-контроллера. Этот метод вызывается автоматически
-     * после того, как fxml-файл будет загружен.
-     */
     @FXML
     private void initialize() {
-        // Инициализация таблицы адресатов с двумя столбцами.
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
 
-        // Очистка дополнительной информации об адресате.
         showPersonDetails(null);
 
-        // Слушаем изменения выбора, и при изменении отображаем
-        // дополнительную информацию об адресате.
         personTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
 
     }
 
-    /**
-     * Вызывается главным приложением, которое даёт на себя ссылку.
-     *
-     * @param mainApp
-     */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-        // Добавление в таблицу данных из наблюдаемого списка
         personTable.setItems(mainApp.getPersonData());
     }
 
-    /**
- * Заполняет все текстовые поля, отображая подробности об адресате.
- * Если указанный адресат = null, то все текстовые поля очищаются.
- *
- * @param person — адресат типа Person или null
- */
 private void showPersonDetails(Person person) {
     if (person != null) {
-        // Заполняем метки информацией из объекта person.
         firstNameLabel.setText(person.getFirstName());
         lastNameLabel.setText(person.getLastName());
         streetLabel.setText(person.getStreet());
         postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
         cityLabel.setText(person.getCity());
 
-        // TODO: Нам нужен способ для перевода дня рождения в тип String!
-        // birthdayLabel.setText(...);
         birthdayLabel.setText(DateUtil.format(person.getBirthday()));
     } else {
-        // Если Person = null, то убираем весь текст.
         firstNameLabel.setText("");
         lastNameLabel.setText("");
         streetLabel.setText("");
@@ -108,9 +80,6 @@ private void showPersonDetails(Person person) {
         }
     }
 
-    /**
-     * Вызывается, когда пользователь кликает по кнопке удаления.
-     */
     @FXML
     private void handleDeletePerson() {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
@@ -118,7 +87,6 @@ private void showPersonDetails(Person person) {
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
         } else {
-            // Ничего не выбрано.
             Alert alert = new Alert(AlertType.WARNING);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("No Selection");
@@ -130,10 +98,6 @@ private void showPersonDetails(Person person) {
 
     }
 
-    /**
-     * Вызывается, когда пользователь кликает по кнопке New...
-     * Открывает диалоговое окно с дополнительной информацией нового адресата.
-     */
     @FXML
     private void handleNewPerson() {
         Person tempPerson = new Person();
@@ -143,10 +107,6 @@ private void showPersonDetails(Person person) {
         }
     }
 
-    /**
-     * Вызывается, когда пользователь кликает по кнопка Edit...
-     * Открывает диалоговое окно для изменения выбранного адресата.
-     */
     @FXML
     private void handleEditPerson() {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
@@ -157,7 +117,6 @@ private void showPersonDetails(Person person) {
             }
 
         } else {
-            // Ничего не выбрано.
             Alert alert = new Alert(AlertType.WARNING);
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("No Selection");

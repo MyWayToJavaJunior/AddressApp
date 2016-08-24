@@ -1,4 +1,4 @@
-package ch.makery.address.model;
+package com.ketaetc.address.example.model;
 
 /**
  * Author: ketaetc (ketaetc@gmail.com)
@@ -6,8 +6,8 @@ package ch.makery.address.model;
  */
 import java.time.LocalDate;
 
-import ch.makery.address.MainApp;
-import ch.makery.address.util.LocalDateAdapter;
+import com.ketaetc.address.example.MainApp;
+import com.ketaetc.address.example.util.LocalDateAdapter;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -18,10 +18,6 @@ import javafx.beans.property.StringProperty;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-/**
- * Класс-модель для адресата (Person).
- *
- */
 @XmlSeeAlso(MainApp.class)
 public class Person {
 
@@ -32,24 +28,14 @@ public class Person {
     private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
 
-    /**
-     * Конструктор по умолчанию.
-     */
     public Person() {
         this(null, null);
     }
 
-    /**
-     * Конструктор с некоторыми начальными данными.
-     *
-     * @param firstName
-     * @param lastName
-     */
     public Person(String firstName, String lastName) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
 
-        // Какие-то фиктивные начальные данные для удобства тестирования.
         this.street = new SimpleStringProperty("какая-то улица");
         this.postalCode = new SimpleIntegerProperty(1234);
         this.city = new SimpleStringProperty("какой-то город");

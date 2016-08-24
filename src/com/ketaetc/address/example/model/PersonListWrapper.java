@@ -1,23 +1,15 @@
-package ch.makery.address.model;
+package com.ketaetc.address.example.model;
 
 /**
  * Author: ketaetc (ketaetc@gmail.com)
  * Date: 22.06.16 0:17
  */
 
-import ch.makery.address.MainApp;
-
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 
-/**
- * Вспомогательный класс для обёртывания списка адресатов.
- * Используется для сохранения списка адресатов в XML.
- *
- */
 @XmlRootElement(name = "persons")
 public class PersonListWrapper {
 
