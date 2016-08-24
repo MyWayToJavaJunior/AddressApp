@@ -41,15 +41,15 @@ public class MainApp extends Application {
     private ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public MainApp() {
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        personData.add(new Person("Name0", "FamilyName0"));
+        personData.add(new Person("Name1", "FamilyName1"));
+        personData.add(new Person("Name2", "FamilyName2"));
+        personData.add(new Person("Name3", "FamilyName3"));
+        personData.add(new Person("Name4", "FamilyName4"));
+        personData.add(new Person("Name5", "FamilyName5"));
+        personData.add(new Person("Name6", "FamilyName6"));
+        personData.add(new Person("Name7", "FamilyName7"));
+        personData.add(new Person("Name8", "FamilyName8"));
     }
 
     public ObservableList<Person> getPersonData() {
@@ -180,7 +180,7 @@ public class MainApp extends Application {
 
             setPersonFilePath(file);
 
-        } catch (Exception e) { // catches ANY exception
+        } catch (Exception e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Could not load data");
